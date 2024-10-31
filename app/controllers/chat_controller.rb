@@ -7,7 +7,7 @@ class ChatController < ApplicationController
   end
 
   def send_message
-    @new_chat = current_user.chats.create!(title: params[:message][0,15])   
+    @new_chat = current_user.chats.create!(title: params[:message][0,20])   
     @message = @new_chat.messages.create!(content: params[:message], message_type: :question)
     ResponseJob.perform_async(@message.content, @new_chat.id)
     redirect_to chat_path(@new_chat)
