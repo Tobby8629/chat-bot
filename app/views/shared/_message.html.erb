@@ -1,0 +1,7 @@
+<div id="<%= dom_id(message) %>" class="<%= message.message_type == 'question' ? 'bg-gray-500 ml-auto' : 'bg-gray-600 mr-auto' %> w-fit max-w-[45%] text-gray-100 p-4 rounded-lg my-3">
+  <p><%= message.content %></p>
+  <span class="text-xs"><%= message.created_at.strftime("%H:%M %p") %></span>
+</div>
+
+
+

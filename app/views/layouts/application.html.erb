@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "Chat Bot" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <% if user_signed_in? %>
+      <div class="w-[20%] min-h-screen p-2 fixed mt-[75px] shadow-md shadow-gray-300">
+        <%= render "shared/chats", chats: current_user.chats %>
+      </div>
+
+      <nav class="bg-gray-400 fixed top-0 w-full h-[70px] p-5">
+        <%= link_to "logout", destroy_user_session_path, method: :delete %>
+      </nav>
+    <% end %>
+    <main class="w-[80%] ml-auto py-[80px] px-10">
+      <%= yield %>
+    </main>
+  </body>
+</html>
+ 

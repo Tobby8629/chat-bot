@@ -1,0 +1,9 @@
+<section id="main-screen" class= "min-h-screen flex flex-col justify-center items-center">
+   <h3>What can I help you with?</h3>
+   <div>
+     <%= form_with(url: send_message_path, method: :post) do |form| %>
+      <%= form.text_field :message, placeholder: "Message ASK ME AI" %>
+      <%= form.submit "Submit" %>
+    <% end %>
+   </div>
+</section>

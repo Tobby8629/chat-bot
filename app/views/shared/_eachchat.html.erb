@@ -1,0 +1,4 @@
+<div class="p-4 bg-gray-300 my-2 rounded-md" id="chat<%=chat.id%>">
+  <%= link_to chat.title, chat_path(chat) %>
+  <%= link_to "delete", delete_chat_path(chat), data:{turbo_method: :delete} %>
+</div>

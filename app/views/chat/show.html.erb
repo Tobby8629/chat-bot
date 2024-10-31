@@ -1,0 +1,13 @@
+<%= turbo_stream_from "message-list" %>
+<%=turbo_frame_tag "message-list" do %>
+  <%= render partial: "shared/message", collection: @messages, as: :message %>
+<%end%>
+
+<div class=" rounded-top-md fixed bottom-0 w-[80%] bg-white flex justify-center left-[20%]">
+  <%= form_with url: send_message_to_chat_path(@findChat), method: :post, local: false, class: "w-8/12 p-4 bg-gray-600 flex items-center justify-center" do |form| %>
+    <%= form.text_area :message, placeholder: "Message ASK ME AI", class: "bg-transparent resize-none h-[45px] flex items-center max-h-[350px] w-7/12 mr-4 text-gray-100 outline-none rounded-3xl" %>
+    <%= form.submit do %>
+     <i class="fas fa-arrow-up"></i>
+    <%end%>
+  <% end %>
+</div> 

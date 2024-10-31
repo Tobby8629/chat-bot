@@ -1,0 +1,7 @@
+<div id="chat-wrapper">
+ <% if chats.empty? %>
+  <p>No chat History yet</p>
+ <%else%>
+    <%= render partial: "shared/eachchat", collection:chats, as: :chat %>
+  <%end%>
+</div>
