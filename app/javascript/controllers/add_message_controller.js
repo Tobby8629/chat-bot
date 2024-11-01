@@ -36,6 +36,6 @@ export default class extends Controller {
     console.log("Scrolling to bottom...")
     setTimeout(() => {
       this.messagesTarget.scrollTop = this.messagesTarget.scrollHeight
-    }, 100) // Adding a slight delay for Turbo rendering
+    }, 100)
   }
 }

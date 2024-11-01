@@ -43,6 +43,3 @@ class ChatController < ApplicationController
 end
 
 
-
-
-#  class: "bg-transparent resize-none h-[45px] text-wrap flex items-center border-none max-h-[350px] w-11/12 mr-4 text-gray-100",  

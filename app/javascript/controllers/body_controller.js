@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="body"
 export default class extends Controller {
-  static targets = ["chat"]
+  static targets = ["chat", "chatinput"]
   connect() {
   }
   

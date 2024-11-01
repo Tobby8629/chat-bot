@@ -2,7 +2,7 @@
    <h3 class="text-3xl mb-10 font-bold">What can I help you with?</h3>
    <div class="w-1/2 auto flex justify-center">
      <%= form_with(url: send_message_path, method: :post, class: "w-full py-[5px] bg-gray-500 px-5 border-none flex items-center justify-between rounded-3xl") do |form| %>
-      <%= form.text_area :message, placeholder: "Message ASK ME AI", 
+      <%= form.text_field :message, placeholder: "Message ASK ME AI", 
         class: "w-10/12 bg-transparent text-gray-100 outline-none resize-none border-none h-[50px] text-wrap max-h-[350px] mr-4"%>
       <button type="submit" class="bg-gray-400 rounded-full text-lg h-[38px] w-[38px] text-gray-200" data-action="click->add-message#submitInput">
         <i class="fa-solid fa-arrow-up"></i>
