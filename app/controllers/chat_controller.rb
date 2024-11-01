@@ -1,13 +1,13 @@
 class ChatController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :delete_chat]
-  
+  before_action :authenticate_user!, only: [ :show, :delete_chat ]
+
   def show
     @findChat = Chat.find(params[:id])
     @messages = @findChat.messages
   end
 
   def send_message
-    @new_chat = current_user.chats.create!(title: params[:message][0,20])   
+    @new_chat = current_user.chats.create!(title: params[:message][0, 20])
     @message = @new_chat.messages.create!(content: params[:message], message_type: :question)
     ResponseJob.perform_async(@message.content, @new_chat.id)
     redirect_to chat_path(@new_chat)
@@ -17,14 +17,14 @@ class ChatController < ApplicationController
     chat = current_user.chats.find(params[:id])
     @message = chat.messages.create!(content: params[:message], message_type: :question)
     @sentmessage = params[:message]
-    
+
     ResponseJob.perform_async(@sentmessage, chat.id)
-    
+
     respond_to do |format|
       format.turbo_stream
     end
   end
-  
+
 
 
   def delete_chat
@@ -32,7 +32,7 @@ class ChatController < ApplicationController
    puts @chat
     if @chat.destroy
       respond_to do |format|
-        format.turbo_stream{ 
+        format.turbo_stream {
           render turbo_stream: turbo_stream.remove("chat#{@chat.id}")
          }
       end
@@ -41,5 +41,3 @@ class ChatController < ApplicationController
     end
   end
 end
-
-

@@ -1,12 +1,12 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 Rails.application.routes.draw do
   devise_for :users, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    sessions: "users/sessions",
+    registrations: "users/registrations"
   }
-    
+
   authenticate :user do
-    mount Sidekiq::Web => '/sidekiq'
+    mount Sidekiq::Web => "/sidekiq"
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -20,10 +20,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "pages#welcome"
-  get "home", to:"pages#home", as:"home"
-  get "chat/:id", to:"chat#show", as:"chat"
+  get "home", to: "pages#home", as: "home"
+  get "chat/:id", to: "chat#show", as: "chat"
   post "send_message", to: "chat#send_message", as: "send_message"
   post "send_message_to_chat/:id", to: "chat#send_message_to_chat", as: "send_message_to_chat"
   delete "delete_chat/:id", to: "chat#delete_chat", as: "delete_chat"
-
 end
