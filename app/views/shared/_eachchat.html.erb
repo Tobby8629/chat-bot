@@ -1,7 +1,8 @@
-<div class="p-4 bg-gray-300 my-2 rounded-md flex justify-between items-center" id="chat<%=chat.id%>">
- <% truncated_title = chat.title.length > 17 ? "#{chat.title}..." : chat.title %>
+<div class="p-4 bg-gray-300 my-2 rounded-md flex justify-between items-center" id="chat<%= chat.id %>" data-body-target="chat">
+  <% truncated_title = chat.title.length > 17 ? "#{chat.title}..." : chat.title %>
   <%= link_to truncated_title, chat_path(chat), class: "w-10/12" %>
-  <%= link_to delete_chat_path(chat), data:{turbo_method: :delete}, class: "text-red-400" do %>
-  <%= icon('fa-solid', 'trash ') %>
-  <% end%>
+  
+  <%= link_to delete_chat_path(chat) ,  data: {turbo_method: :delete, action: "click->body#delete_chat", body_id_param: chat.id }, class: "text-red-400" do %>
+    <%= icon('fa-solid', 'trash') %>
+  <% end %>
 </div>

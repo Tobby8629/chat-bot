@@ -18,9 +18,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="bg-gray-300" data-controller="body">
+    <%= turbo_stream_from "message-list" %>
     <% if user_signed_in? %>
-      <div class="w-[20%] min-h-screen p-4 px-2 fixed mt-[75px] shadow-md shadow-gray-300">
+      <div class="w-[20%] min-h-screen p-4 px-2 fixed mt-[75px] shadow-md bg-gray-400 shadow-gray-300">
         <div class="flex justify-between items-center mb-5">
           <h3 class="capitalize text-xl font-bold">Chat History</h3>
           <%= link_to home_path, class: "text-xl" do %>
@@ -34,7 +35,7 @@
         <%= link_to "logout", destroy_user_session_path, method: :delete %>
       </nav>
     <% end %>
-    <main class="w-[80%] ml-auto px-10">
+    <main class="w-[80%] bg-gray-300 ml-auto px-10">
       <%= yield %>
     </main>
   </body>

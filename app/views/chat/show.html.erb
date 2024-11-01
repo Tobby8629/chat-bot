@@ -1,15 +1,14 @@
-<div data-controller="add-message">
-  <%= turbo_stream_from "message-list" %>
+<div data-controller="add-message" id="chatag<%=@findChat.id%>" data-body-target="chat">
   <div class="py-[80px] ">
     <%= turbo_frame_tag "message-list", data: { "add-message-target" => "messages" } do %>
       <%= render partial: "shared/message", collection: @messages, as: :message %>
     <% end %>
   </div>
 
-  <div class="rounded-top-md fixed bottom-0 w-[80%] bg-white flex justify-center left-[20%]">
-    <%= form_with url: send_message_to_chat_path(@findChat), method: :post, local: false, class: "w-8/12 p-4 bg-gray-600 flex items-center justify-center", data: { "add-message-target" => "form" } do |form| %>
+  <div class="fixed bottom-0 py-2 w-[80%] bg-gray-300 flex justify-center left-[20%]">
+    <%= form_with url: send_message_to_chat_path(@findChat), method: :post, local: false, class: "w-8/12 p-4 bg-gray-600 flex items-center rounded-full justify-center", data: { "add-message-target" => "form" } do |form| %>
       <%= form.text_area :message, placeholder: "Message ASK ME AI", 
-          class: "bg-transparent resize-none h-[45px] text-wrap flex items-center max-h-[350px] w-7/12 mr-4 text-gray-100 rounded-3xl", 
+          class: "bg-transparent resize-none h-[45px] text-wrap flex items-center border-none max-h-[350px] w-11/12 mr-4 text-gray-100", 
           data: { "add-message-target" => "chatinput" } %>
       <button type="submit" class="bg-gray-500 rounded-full text-lg h-[38px] w-[38px] text-gray-200" data-action="click->add-message#submitInput">
         <i class="fa-solid fa-arrow-up"></i>
