@@ -2,10 +2,10 @@
 
 one:
   content: MyText
-  chats: one
+  chat: one
   type_message: 1
 
 two:
   content: MyText
-  chats: two
+  chat: two
   type_message: 1

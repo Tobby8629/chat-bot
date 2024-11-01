@@ -23,7 +23,13 @@ gem "devise"
 # Use Redis adapter to run Action Cable in production
 gem "redis", ">= 4.0.1"
 
+gem 'database_cleaner-active_record'
+
 gem "font-awesome-sass"
+
+# Gemfile
+gem 'dotenv-rails'
+
 
 gem "pg", "~> 1.1"
 
